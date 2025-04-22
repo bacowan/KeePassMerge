@@ -1,3 +1,4 @@
+#include "pch.h"
 #include <windows.h>
 #include <shobjidl.h>
 #include <shlobj.h>
@@ -42,11 +43,17 @@ public:
     }
 
     HRESULT PreCopyItem(
-        [in] DWORD      dwFlags,
-        [in] IShellItem* psiItem,
-        [in] IShellItem* psiDestinationFolder,
-        [in] LPCWSTR    pszNewName
+        DWORD      dwFlags,
+        IShellItem* psiItem,
+        IShellItem* psiDestinationFolder,
+        LPCWSTR    pszNewName
     ) {
+        int result = MessageBoxW(
+            nullptr,
+            L"Hello World!",
+            L"Custom Copy Handler",
+            MB_YESNOCANCEL | MB_ICONQUESTION
+        );
         return S_OK;
     }
 };

@@ -18,23 +18,11 @@ using Windows.Foundation.Collections;
 
 namespace KeePassMerge
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class FilePicker : UserControl
     {
-        private void resize(int width, int height)
-        {
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-            var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
-            var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = width, Height = height });
-        }
-
-        public MainWindow()
+        public FilePicker()
         {
             this.InitializeComponent();
-            resize(1000, 400);
         }
     }
 }

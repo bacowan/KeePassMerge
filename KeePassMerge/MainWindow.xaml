@@ -9,7 +9,33 @@
     mc:Ignorable="d"
     Title="KeePassMerge">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">From:</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="0,0,5,0">File:</TextBlock>
+        <local:FilePicker Grid.Column="1" Grid.Row="1" Margin="0,0,10,0"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">To:</TextBlock>
+        <TextBlock Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Margin="0,0,5,0">File:</TextBlock>
+        <local:FilePicker Grid.Column="3" Grid.Row="1"/>
+        <TextBlock Grid.Row="2" VerticalAlignment="Center" Margin="0,0,5,0">Password:</TextBlock>
+        <PasswordBox Grid.Row="2" Grid.Column="1" Margin="0,0,10,0"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,5,0">Password:</TextBlock>
+        <PasswordBox Grid.Row="2" Grid.Column="3"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="4" HorizontalAlignment="Right">
+            <Button>Cancel</Button>
+            <Button>Merge</Button>
+        </StackPanel>
+    </Grid>
 </Window>

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "KeePassMerge (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "KeePassMerge (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

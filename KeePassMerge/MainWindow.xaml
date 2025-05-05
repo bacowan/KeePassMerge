@@ -40,7 +40,7 @@
             Use same passwords
         </CheckBox>
         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right">
-            <Button Command="{Binding CancelCommand}">Cancel</Button>
+            <Button Command="{Binding CancelCommand}" CommandParameter="{x:Bind}">Cancel</Button>
             <Button Command="{Binding MergeCommand}">Merge</Button>
         </StackPanel>
     </Grid>

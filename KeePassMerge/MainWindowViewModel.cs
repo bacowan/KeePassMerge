@@ -16,6 +16,9 @@ namespace KeePassMerge
 {
     internal partial class MainWindowViewModel : ObservableObject
     {
+        private StorageFile? fromFile;
+        private StorageFile? toFile;
+
         [ObservableProperty]
         private string fromFilePath = "";
 
@@ -50,15 +53,17 @@ namespace KeePassMerge
         [RelayCommand]
         private async Task SelectToFile(Microsoft.UI.Xaml.Window parentWindow)
         {
-            var file = await SelectFile(parentWindow);
-            ToFilePath = file?.Path ?? "";
+            toFile = await SelectFile(parentWindow);
+            ToFilePath = toFile?.Path ?? "";
+            MergeCommand.NotifyCanExecuteChanged();
         }
 
         [RelayCommand]
         private async Task SelectFromFile(Microsoft.UI.Xaml.Window parentWindow)
         {
-            var file = await SelectFile(parentWindow);
-            FromFilePath = file?.Path ?? "";
+            fromFile = await SelectFile(parentWindow);
+            FromFilePath = fromFile?.Path ?? "";
+            MergeCommand.NotifyCanExecuteChanged();
         }
 
         private async Task<StorageFile?> SelectFile(Microsoft.UI.Xaml.Window parentWindow)
@@ -77,13 +82,19 @@ namespace KeePassMerge
         }
 
         [RelayCommand]
-        private async Task Cancel()
+        private void Cancel(Microsoft.UI.Xaml.Window parentWindow)
+        {
+            parentWindow.Close();
+        }
+
+        [RelayCommand(CanExecute = nameof(CanMerge))]
+        private async Task Merge()
         {
         }
 
-        [RelayCommand]
-        private async Task Merge()
+        private bool CanMerge()
         {
+            return toFile != null && fromFile != null;
         }
     }
 }

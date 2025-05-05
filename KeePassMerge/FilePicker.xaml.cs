@@ -65,6 +65,20 @@ namespace KeePassMerge
 
 
 
+        public object SelectFileCommandParameter
+        {
+            get { return (object)GetValue(SelectFileCommandParameterProperty); }
+            set { SetValue(SelectFileCommandParameterProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectFileCommandParameter.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectFileCommandParameterProperty =
+            DependencyProperty.Register("SelectFileCommandParameter", typeof(object), typeof(FilePicker), new PropertyMetadata(0));
+
+
+
+
+
         public string Label
         {
             get { return (string)GetValue(LabelProperty); }

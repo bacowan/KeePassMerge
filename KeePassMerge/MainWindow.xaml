@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Title="KeePassMerge">
 
-    <Grid Margin="20">
+    <Grid Margin="20" x:Name="Root">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -23,18 +23,20 @@
         <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Padding="8" CornerRadius="4" Margin="4">
             <local:FilePicker
                 Label="From:"
-                FilePath="{Binding FromFilePath}"
-                Password="{Binding FromFilePassword}"
-                SelectFileCommand="{Binding SelectFileCommand}"/>
+                FilePath="{Binding FromFilePath, Mode=TwoWay}"
+                Password="{Binding FromFilePassword, Mode=TwoWay}"
+                SelectFileCommand="{Binding SelectFromFileCommand}"
+                SelectFileCommandParameter="{x:Bind}"/>
         </Border>
         <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Padding="8" CornerRadius="4" Margin="4">
             <local:FilePicker
                 Label="To:"
-                FilePath="{Binding ToFilePath}"
-                Password="{Binding ToFilePassword}"
-                SelectFileCommand="{Binding SelectFileCommand}"/>
+                FilePath="{Binding ToFilePath, Mode=TwoWay}"
+                Password="{Binding ToFilePassword, Mode=TwoWay}"
+                SelectFileCommand="{Binding SelectToFileCommand}"
+                SelectFileCommandParameter="{x:Bind}"/>
         </Border>
-        <CheckBox Grid.Row="1" IsChecked="{Binding UseSamePasswords}">
+        <CheckBox Grid.Row="1" IsChecked="{Binding UseSamePasswords, Mode=TwoWay}">
             Use same passwords
         </CheckBox>
         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right">

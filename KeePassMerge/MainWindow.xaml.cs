@@ -36,6 +36,7 @@ namespace KeePassMerge
         public MainWindow()
         {
             this.InitializeComponent();
+            Root.DataContext = new MainWindowViewModel();
             resize(1000, 400);
         }
     }

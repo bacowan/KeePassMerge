@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
@@ -18,17 +18,17 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="{Binding Label}"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Text="{x:Bind Label, Mode=OneTime}"/>
         <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="0,0,5,0">File:</TextBlock>
         <Grid Grid.Column="1" Grid.Row="1" Margin="0,0,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox IsReadOnly="True" Grid.Column="0" Margin="0,0,5,0" Text="{Binding FilePath}"/>
-            <Button Grid.Column="1" Command="{Binding SelectFileCommand}">Select file...</Button>
+            <TextBox IsReadOnly="True" Grid.Column="0" Margin="0,0,5,0" Text="{x:Bind FilePath, Mode=TwoWay}"/>
+            <Button Grid.Column="1" Command="{x:Bind SelectFileCommand}" CommandParameter="{x:Bind SelectFileCommandParameter}">Select file...</Button>
         </Grid>
         <TextBlock Grid.Row="2" VerticalAlignment="Center" Margin="0,0,5,0">Password:</TextBlock>
-        <PasswordBox Grid.Row="2" Grid.Column="1" Margin="0,0,10,0" Password="{Binding Password}"/>
+        <PasswordBox Grid.Row="2" Grid.Column="1" Margin="0,0,10,0" Password="{x:Bind Password, Mode=TwoWay}"/>
     </Grid>
 </UserControl>
